@@ -1,9 +1,10 @@
 // Initialize AOS
 document.addEventListener('DOMContentLoaded', function() {
     AOS.init({
-        duration: 800,
+        duration: window.innerWidth < 768 ? 600 : 800,
         easing: 'ease-in-out',
-        once: true
+        once: true,
+        disable: 'mobile' // Disable on mobile if performance issues occur
     });
 
     // Start the typing effect
@@ -95,9 +96,11 @@ function startTypingEffect() {
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    const typingDelay = 100;
-    const deletingDelay = 50;
-    const newWordDelay = 2000;
+    // Adjust typing speed based on screen size
+    const isMobile = window.innerWidth < 768;
+    const typingDelay = isMobile ? 150 : 100;
+    const deletingDelay = isMobile ? 75 : 50;
+    const newWordDelay = isMobile ? 2500 : 2000;
 
     function typeEffect() {
         const currentWord = words[wordIndex];
@@ -139,7 +142,9 @@ function startTypingEffect() {
 function scrollToCharacteristics() {
     const section = document.getElementById('script');
     const navHeight = document.querySelector('nav').offsetHeight;
-    const sectionTop = section.offsetTop - navHeight;
+    const isMobile = window.innerWidth < 768;
+    const offset = isMobile ? 60 : navHeight; // Smaller offset for mobile
+    const sectionTop = section.offsetTop - offset;
     
     window.scrollTo({
         top: sectionTop,
@@ -171,12 +176,15 @@ sections.forEach(section => {
 
 // Add parallax effect to background elements
 document.addEventListener('mousemove', (e) => {
-    const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
-    const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
-    
-    document.querySelectorAll('.bg-gradient-mesh').forEach(element => {
-        element.style.transform = `translate(${moveX}px, ${moveY}px)`;
-    });
+    // Only apply parallax effect on desktop
+    if (window.innerWidth >= 768) {
+        const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+        const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+        
+        document.querySelectorAll('.bg-gradient-mesh').forEach(element => {
+            element.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+    }
 });
 
 // Add reveal on scroll effect
@@ -220,4 +228,31 @@ window.addEventListener('scroll', () => {
         let speed = element.dataset.speed || 0.5;
         element.style.transform = `translateY(${window.scrollY * speed}px)`;
     });
-}); 
+});
+
+// Add responsive handling for the Three.js logo
+window.addEventListener('resize', () => {
+    const logoContainer = document.getElementById('logo-container');
+    if (logoContainer) {
+        const height = window.innerWidth < 768 ? '400px' : '800px';
+        logoContainer.style.height = height;
+    }
+});
+
+// Add responsive navbar handling
+const handleResponsiveNav = () => {
+    const nav = document.querySelector('nav');
+    const isMobile = window.innerWidth < 768;
+    
+    if (isMobile) {
+        nav.classList.add('mobile');
+        // Add smaller padding and font size for mobile
+        nav.style.padding = '0.75rem 1rem';
+    } else {
+        nav.classList.remove('mobile');
+        nav.style.padding = '';
+    }
+};
+
+window.addEventListener('resize', handleResponsiveNav);
+window.addEventListener('load', handleResponsiveNav); 

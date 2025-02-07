@@ -18,6 +18,9 @@ class JSLogo {
         this.init();
         this.addParticleSystem();
         this.addEventListeners();
+
+        // Add resize listener for particle responsiveness
+        window.addEventListener('resize', () => this.handleResize());
     }
 
     init() {
@@ -236,8 +239,11 @@ class JSLogo {
             colors[i + 1] = particleColor.g;
             colors[i + 2] = particleColor.b;
 
-            // Increased particle sizes
-            sizes[i / 3] = Math.random() * 0.15 + 0.04; // Increased from 0.08 + 0.02
+            // Reduced particle sizes for mobile
+            const isMobile = window.innerWidth < 768;
+            sizes[i / 3] = isMobile ? 
+                (Math.random() * 0.08 + 0.02) : // Smaller size for mobile
+                (Math.random() * 0.15 + 0.04);  // Original size for desktop
             
             // Initialize random lifetimes for particles
             lifetimes[i / 3] = Math.random();
@@ -249,12 +255,13 @@ class JSLogo {
         geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
         geometry.setAttribute('lifetime', new THREE.BufferAttribute(lifetimes, 1));
 
-        // Enhanced shader material for better-looking particles
+        // Enhanced shader material with responsive sizes
         const particleMaterial = new THREE.ShaderMaterial({
             uniforms: {
                 time: { value: 0 },
                 pixelRatio: { value: Math.min(window.devicePixelRatio, 2) },
-                containerRadius: { value: 5.0 } // New uniform for fade out radius
+                containerRadius: { value: 5.0 },
+                isMobile: { value: window.innerWidth < 768 ? 1.0 : 0.0 } // New uniform for mobile detection
             },
             vertexShader: `
                 attribute vec3 color;
@@ -265,23 +272,20 @@ class JSLogo {
                 varying float vDistance;
                 uniform float time;
                 uniform float pixelRatio;
+                uniform float isMobile;
                 
                 void main() {
                     vColor = color;
                     vLifetime = lifetime;
                     vec3 pos = position;
                     
-                    // Add wave motion
-                    float wave = sin(time * 2.0 + position.x + position.y) * 0.1;
-                    pos.y += wave;
-                    
                     vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
-                    // Increased base size for larger particles
-                    float particleSize = size * (350.0 / -mvPosition.z) * pixelRatio;
+                    // Adjust size based on mobile
+                    float mobileScale = isMobile > 0.5 ? 0.5 : 1.0; // Reduce size by half on mobile
+                    float particleSize = size * (350.0 / -mvPosition.z) * pixelRatio * mobileScale;
                     gl_PointSize = particleSize * (0.8 + 0.4 * sin(time * 3.0 + lifetime * 10.0));
                     gl_Position = projectionMatrix * mvPosition;
                     
-                    // Calculate distance from center for fade out
                     vDistance = length(pos);
                 }
             `,
@@ -433,6 +437,22 @@ class JSLogo {
         this.camera.aspect = width / height;
         this.camera.updateProjectionMatrix();
         this.renderer.setSize(width, height);
+    }
+
+    handleResize() {
+        // Update particle material for mobile responsiveness
+        if (this.particleSystem) {
+            this.particleSystem.material.uniforms.isMobile.value = window.innerWidth < 768 ? 1.0 : 0.0;
+        }
+        
+        // Existing resize handling
+        if (this.container) {
+            const width = this.container.clientWidth;
+            const height = this.container.clientHeight;
+            this.camera.aspect = width / height;
+            this.camera.updateProjectionMatrix();
+            this.renderer.setSize(width, height);
+        }
     }
 }
 
