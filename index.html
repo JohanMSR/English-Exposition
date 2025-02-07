@@ -27,50 +27,51 @@
 </head>
 <body class="bg-gray-100 animate__animated animate__fadeIn">
     <!-- Navigation -->
-    <nav class="bg-white/90 backdrop-blur-md shadow-xl fixed w-full z-50 top-0 left-0 transition-all duration-300 border-b border-amber-200/20">
-        <div class="container mx-auto px-6 py-4">
+    <nav class="bg-white/90 backdrop-blur-md shadow-xl fixed w-full z-50  transition-all duration-300 border-b border-amber-200/20">
+        <div class="container mx-auto px-4 py-4">
             <div class="flex items-center justify-center">
-                <div class="flex space-x-12">
-                    <a href="#home" class="text-gray-800 hover:text-amber-600 hover:scale-105 transition-all duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-amber-600 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full font-medium">Home</a>
-                    <a href="#services" class="text-gray-800 hover:text-amber-600 hover:scale-105 transition-all duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-amber-600 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full font-medium">JavaScript Characteristics</a>
-                    <a href="#script" class="text-gray-800 hover:text-amber-600 hover:scale-105 transition-all duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-amber-600 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full font-medium">Script</a>
-                    <a href="#about" class="text-gray-800 hover:text-amber-600 hover:scale-105 transition-all duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-amber-600 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full font-medium">About</a>
+                <div class="flex flex-wrap space-x-4 md:space-x-12">
+                    <a href="#home" class="text-sm md:text-base text-gray-800 hover:text-amber-600 hover:scale-105 transition-all duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-amber-600 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full font-medium">Home</a>
+                    <a href="#services" class="text-sm md:text-base text-gray-800 hover:text-amber-600 hover:scale-105 transition-all duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-amber-600 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full font-medium">JavaScript Characteristics</a>
+                    <a href="#script" class="text-sm md:text-base text-gray-800 hover:text-amber-600 hover:scale-105 transition-all duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-amber-600 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full font-medium">Script</a>
+                    <a href="#about" class="text-sm md:text-base text-gray-800 hover:text-amber-600 hover:scale-105 transition-all duration-300 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-amber-600 after:left-0 after:-bottom-1 after:transition-all after:duration-300 hover:after:w-full font-medium">About</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen pt-24 pb-12 px-6 relative flex items-center bg-white">
+    <section id="home" class="min-h-screen pt-16 md:pt-24 pb-12 px-4 md:px-6 relative flex items-center bg-white">
         <div class="container mx-auto flex flex-col md:flex-row items-center justify-center">
-            <div class="md:w-2/3 z-10" data-aos="fade-right">
-                <h1 class="text-5xl md:text-7xl font-bold text-gray-800 mb-8 leading-tight">
+            <div class="w-full md:w-2/3 z-10 text-center md:text-left" data-aos="fade-right">
+                <h1 class="text-4xl md:text-7xl font-bold text-gray-800 mb-8 leading-tight">
                     My Favorite<br/>
                     Programming<br/>
                     Language,
                     <span class="gradient-text mt-3">JavaScript</span>
                 </h1>
-                <div class="typing-container text-gray-700">
-                    <span class="text-gray-600">With JavaScript you can create </span>
-                    <span id="typing-text" class="text-yellow-500"></span>
+                <div class="typing-container text-base md:text-lg text-gray-700 flex flex-col items-center md:items-start">
+                    <span class="text-gray-600">With JavaScript you can</span>
+                    <span class="text-gray-600">create</span>
+                    <span id="typing-text" class="text-yellow-500 mt-1"></span>
                 </div>
-                <button onclick="scrollToCharacteristics()" class="animated-button bg-gradient-to-r from-[#f7df1e] to-[#f7df1e] text-gray-900 px-10 py-4 rounded-xl text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-[#f7df1e]/30">
+                <button onclick="scrollToCharacteristics()" class="mt-8 animated-button bg-gradient-to-r from-[#f7df1e] to-[#f7df1e] text-gray-900 px-6 md:px-10 py-3 md:py-4 rounded-xl text-base md:text-lg font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-[#f7df1e]/30">
                     Start Exposition
                 </button>
             </div>
-            <div class="md:w-3/4 mt-16 md:mt-0" data-aos="fade-left">
-                <div id="logo-container" class="w-full h-[800px] mx-auto"></div>
+            <div class="w-full md:w-3/4 mt-12 md:mt-0" data-aos="fade-left">
+                <div id="logo-container" class="w-full h-[400px] md:h-[800px] mx-auto"></div>
             </div>
         </div>
     </section>
 
     <!-- JavaScript Characteristics Section -->
-    <section id="services" class="py-16 bg-white relative overflow-hidden">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12" data-aos="fade-up">JavaScript Characteristics</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <section id="services" class="py-12 md:py-16 bg-white relative overflow-hidden">
+        <div class="container mx-auto px-4 md:px-6">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-12" data-aos="fade-up">JavaScript Characteristics</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
                 <!-- Dynamic Typing Card -->
-                <div class="p-6 glass-card gradient-border shine-effect hover-float rounded-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="100">
+                <div class="p-4 md:p-6 glass-card gradient-border shine-effect hover-float rounded-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="100">
                     <div class="w-16 h-16 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
                         <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
@@ -81,7 +82,7 @@
                 </div>
 
                 <!-- First-Class Functions Card -->
-                <div class="p-6 glass-card gradient-border shine-effect hover-float rounded-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="200">
+                <div class="p-4 md:p-6 glass-card gradient-border shine-effect hover-float rounded-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="200">
                     <div class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                         <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
@@ -92,7 +93,7 @@
                 </div>
 
                 <!-- Event-Driven Card -->
-                <div class="p-6 glass-card gradient-border shine-effect hover-float rounded-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="300">
+                <div class="p-4 md:p-6 glass-card gradient-border shine-effect hover-float rounded-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="300">
                     <div class="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-4">
                         <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path>
@@ -103,7 +104,7 @@
                 </div>
 
                 <!-- Object-Oriented Card -->
-                <div class="p-6 glass-card gradient-border shine-effect hover-float rounded-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="400">
+                <div class="p-4 md:p-6 glass-card gradient-border shine-effect hover-float rounded-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="400">
                     <div class="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center mb-4">
                         <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
@@ -114,7 +115,7 @@
                 </div>
 
                 <!-- Cross-Platform Card -->
-                <div class="p-6 glass-card gradient-border shine-effect hover-float rounded-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="500">
+                <div class="p-4 md:p-6 glass-card gradient-border shine-effect hover-float rounded-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="500">
                     <div class="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                         <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
@@ -125,7 +126,7 @@
                 </div>
 
                 <!-- Rich Ecosystem Card -->
-                <div class="p-6 glass-card gradient-border shine-effect hover-float rounded-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="600">
+                <div class="p-4 md:p-6 glass-card gradient-border shine-effect hover-float rounded-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="600">
                     <div class="w-16 h-16 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
                         <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
@@ -139,19 +140,19 @@
     </section>
 
     <!-- Script Section -->
-    <section id="script" class="py-16 bg-gradient-mesh relative">
-        <div class="container mx-auto px-6 relative">
-            <h2 class="text-4xl font-bold text-center mb-12 text-glow bg-clip-text text-transparent bg-gradient-to-r from-[#e6cb00] to-[#e6cb00]" data-aos="fade-up">Script</h2>
+    <section id="script" class="py-12 md:py-16 bg-gradient-mesh relative">
+        <div class="container mx-auto px-4 md:px-6 relative">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-glow bg-clip-text text-transparent bg-gradient-to-r from-[#e6cb00] to-[#e6cb00]" data-aos="fade-up">Script</h2>
             <div class="max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-                <div class="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 border border-yellow-100/50">
+                <div class="bg-white/80 backdrop-blur-md rounded-xl shadow-lg p-6 md:p-8 hover:shadow-xl transition-all duration-300 border border-yellow-100/50">
                     <div class="prose lg:prose-lg max-w-none">
-                        <p class="text-lg leading-relaxed text-gray-700 font-medium">
+                        <p class="text-base md:text-lg leading-relaxed text-gray-700 font-medium">
                             Good morning, I'm Johan and today I gonna to talk about my favorite programming lenguage, Javascript.
                         </p>
-                        <p class="text-lg leading-relaxed text-gray-700 mt-4">
+                        <p class="text-base md:text-lg leading-relaxed text-gray-700 mt-4">
                             JavaScript, a versatile programming language, is used both on the client-side and server-side to create interactive web applications. It is popular because it is easy to learn and implement. Not only is JavaScript dynamic, but also it is highly adaptable. Neither is JavaScript limited to one specific platform, nor is it confined to basic tasks.
                         </p>
-                        <p class="text-lg leading-relaxed text-gray-700 mt-4">
+                        <p class="text-base md:text-lg leading-relaxed text-gray-700 mt-4">
                             It is often paired with HTML and CSS, and it works seamlessly across various platforms. JavaScript code can be written and tested easily, so it speeds up the development process. Furthermore, it allows for the creation of real-time applications while providing robust security features. Consequently, JavaScript is considered an essential tool for modern web development.
                         </p>
                     </div>
@@ -161,20 +162,20 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-16 bg-gradient-mesh relative">
-        <div class="container mx-auto px-6 relative">
-            <h2 class="text-4xl font-bold text-center mb-12 text-glow bg-clip-text text-transparent bg-gradient-to-r from-[#e6cb00] to-[#e6cb00]" data-aos="fade-up">About</h2>
-            <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-8" data-aos="fade-up" data-aos-delay="200">
+    <section id="about" class="py-12 md:py-16 bg-gradient-mesh relative">
+        <div class="container mx-auto px-4 md:px-6 relative">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 text-glow bg-clip-text text-transparent bg-gradient-to-r from-[#e6cb00] to-[#e6cb00]" data-aos="fade-up">About</h2>
+            <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg p-6 md:p-8" data-aos="fade-up" data-aos-delay="200">
                 <div class="flex flex-col items-center text-center">
                     <div class="w-32 h-32 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full flex items-center justify-center mb-6">
                         <span class="text-4xl font-bold text-white">JS</span>
                     </div>
                     <h3 class="text-2xl font-semibold text-gray-800 mb-4">Johan Salazar</h3>
                     <div class="space-y-4 text-gray-600">
-                        <p class="text-lg">
+                        <p class="text-base md:text-lg">
                             This website was created as a presentation for the English class section "B".
                         </p>
-                        <p class="text-lg">
+                        <p class="text-base md:text-lg">
                             A showcase of modern web development using JavaScript, featuring interactive 3D graphics, 
                             animations, and responsive design.
                         </p>
