@@ -307,9 +307,9 @@ class JSLogo {
                     float fadeEnd = containerRadius;
                     float fadeAlpha = 1.0 - smoothstep(fadeStart, fadeEnd, vDistance);
                     
-                    // Increased brightness by multiplying color
-                    vec3 brightColor = vColor * 1.3;
-                    gl_FragColor = vec4(brightColor, alpha * fadeAlpha * 0.9);
+                    // Reduced brightness by using original color without multiplication
+                    vec3 finalColor = vColor;
+                    gl_FragColor = vec4(finalColor, alpha * fadeAlpha * 0.6); // Reduced opacity from 0.9 to 0.6
                 }
             `,
             transparent: true,
@@ -374,8 +374,8 @@ class JSLogo {
             positions[i] = tempX * cosAngle - z * sinAngle;
             positions[i + 2] = tempX * sinAngle + z * cosAngle;
 
-            // Reduced outward force
-            const outwardForce = 0.0002; // Reduced from 0.0005
+            // Reduced outward force even more
+            const outwardForce = 0.00015; // Reduced from 0.0002
             velocities[i] += (positions[i] / radius) * outwardForce;
             velocities[i + 1] += (positions[i + 1] / radius) * outwardForce;
             velocities[i + 2] += (positions[i + 2] / radius) * outwardForce;
