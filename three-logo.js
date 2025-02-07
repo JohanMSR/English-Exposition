@@ -197,13 +197,16 @@ class JSLogo {
     }
 
     addParticleSystem() {
-        const particleCount = 5500; // Increased from 2000
+        // Ajuste del número de partículas según el dispositivo
+        const isMobile = window.innerWidth < 768;
+        const particleCount = isMobile ? 1000 : 2500; // Reducido de 5500 a 3500/2000
+        
         const geometry = new THREE.BufferGeometry();
         const positions = new Float32Array(particleCount * 3);
         const velocities = new Float32Array(particleCount * 3);
         const colors = new Float32Array(particleCount * 3);
         const sizes = new Float32Array(particleCount);
-        const lifetimes = new Float32Array(particleCount); // New array for particle lifetime
+        const lifetimes = new Float32Array(particleCount);
 
         const color1 = new THREE.Color(0xf7df1e); // JavaScript yellow
         const color2 = new THREE.Color(0xffd700); // Gold
@@ -239,12 +242,12 @@ class JSLogo {
             colors[i + 1] = particleColor.g;
             colors[i + 2] = particleColor.b;
 
-            // Reduced particle sizes for mobile
-            const isMobile = window.innerWidth < 768;
+            // Ajuste de tamaños de partículas
             sizes[i / 3] = isMobile ? 
-                (Math.random() * 0.08 + 0.02) : // Smaller size for mobile
-                (Math.random() * 0.15 + 0.04);  // Original size for desktop
+                (Math.random() * 0.16 + 0.08) : // Tamaño más grande para móvil
+                (Math.random() * 0.15 + 0.01);   // Tamaño más grande para desktop
             
+
             // Initialize random lifetimes for particles
             lifetimes[i / 3] = Math.random();
         }
@@ -280,9 +283,8 @@ class JSLogo {
                     vec3 pos = position;
                     
                     vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
-                    // Adjust size based on mobile
-                    float mobileScale = isMobile > 0.5 ? 0.5 : 1.0; // Reduce size by half on mobile
-                    float particleSize = size * (350.0 / -mvPosition.z) * pixelRatio * mobileScale;
+                    float mobileScale = isMobile > 0.5 ? 0.7 : 1.0; // Aumentado de 0.5 a 0.7 para móvil
+                    float particleSize = size * (450.0 / -mvPosition.z) * pixelRatio * mobileScale; // Aumentado de 350.0 a 450.0
                     gl_PointSize = particleSize * (0.8 + 0.4 * sin(time * 3.0 + lifetime * 10.0));
                     gl_Position = projectionMatrix * mvPosition;
                     
